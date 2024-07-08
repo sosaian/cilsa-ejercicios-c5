@@ -71,14 +71,17 @@ function checkForm() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const DEFAULT_STYLE_BUTTON = document.getElementById("styleDefault");
-
-    DEFAULT_STYLE_BUTTON.addEventListener("click", () => {
-        document.body.classList.remove("high_contrast")
-    });
-
     const HIGH_CONTRAST_STYLE_BUTTON = document.getElementById("styleHighContrast");
 
+    DEFAULT_STYLE_BUTTON.addEventListener("click", () => {
+        DEFAULT_STYLE_BUTTON.classList.add("active")
+        HIGH_CONTRAST_STYLE_BUTTON.classList.remove("active")
+        document.body.classList.remove("high_contrast")
+    });
+    
     HIGH_CONTRAST_STYLE_BUTTON.addEventListener("click", () => {
+        HIGH_CONTRAST_STYLE_BUTTON.classList.add("active")
+        DEFAULT_STYLE_BUTTON.classList.remove("active")
         document.body.classList.add("high_contrast")
     });
 

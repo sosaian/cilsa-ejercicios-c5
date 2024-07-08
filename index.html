@@ -7,14 +7,25 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body>
-    <header>
-        <h1>Ejercicios Clase 5</h1>
-        <div>
-            <button id="styleDefault">Estilo original</button>
-            <button id="styleHighContrast">Estilo de Alto Contraste</button>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <h1 class="navbar-brand">Ejercicios Clase 5</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+                    <li class="nav-item">
+                        <button id="styleDefault" class="nav-link active" aria-current="page">Estilo original</button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="styleHighContrast" class="nav-link">Estilo de Alto Contraste</button>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
     <main>
         <form id="form">
             <fieldset>
