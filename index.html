@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Clase 1</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Ejercicios Clase 1</h1>
+        <div>
+            <button id="styleDefault">Estilo original</button>
+            <button id="styleHighContrast">Estilo de Alto Contraste</button>
+        </div>
+    </header>
+    <main>
+        <form id="form">
+            <fieldset>
+                <legend>Formulario de datos personales</legend>
+    
+                <div>
+                    <label for="formName">Nombre</label>
+                    <input id="formName" type="text" placeholder="Ian" required>
+                </div>
+                <div>
+                    <label for="formSurname">Apellido</label>
+                    <input id="formSurname" type="text" placeholder="Sosa" required>
+                </div>
+                <div>
+                    <label for="formEmail">Correo electrónico</label>
+                    <input id="formEmail" type="email" placeholder="sosaian@proton.me" required>
+                </div>
+                <div>
+                    <label for="formDateOfBirth">Fecha de nacimiento</label>
+                    <input id="formDateOfBirth" type="date" required>
+                </div>
+                <div>
+                    <label for="formCountryOfResidence">País de residencia</label>
+                    <select id="formCountryOfResidence" required>
+                        <option value="" disabled selected>Seleccione su país</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="España">España</option>
+                        <option value="México">México</option>
+                        <option value="Perú">Perú</option>
+                        <option value="Uruguay">Uruguay</option>
+                    </select>
+                </div>
+                <button id="formSubmit" type="submit">Enviar</button>
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <h2>CILSA | Bootcamp Fullstack</h2>
+    </footer>
+</body>
+</html>
