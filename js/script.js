@@ -13,7 +13,7 @@ function validateEmail(email)
         Es importante tener en cuenta que no cubre todos los casos posibles y específicos definidos por los estándares de correos electrónicos (RFC 5322), pero es adecuado para la mayoría de los propósitos comunes.
     */
 
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     
     /* 
         Desglose de la Expresión Regular
@@ -26,15 +26,15 @@ function validateEmail(email)
             $: Fin de la línea.
     */
 
-    return regex.test(email);
+    return regex.test(email)
 }
 
 function checkForm() {
-    const NAME = document.getElementById("formName");
-    const SURNAME = document.getElementById("formSurname");
-    const EMAIL = document.getElementById("formEmail");
-    const DATE_OF_BIRTH = document.getElementById("formDateOfBirth");
-    const COUNTRY_OF_RESIDENCE = document.getElementById("formCountryOfResidence");
+    const NAME = document.getElementById("formName")
+    const SURNAME = document.getElementById("formSurname")
+    const EMAIL = document.getElementById("formEmail")
+    const DATE_OF_BIRTH = document.getElementById("formDateOfBirth")
+    const COUNTRY_OF_RESIDENCE = document.getElementById("formCountryOfResidence")
 
     //  Intencionalmente evito un early return para avisar al usuario de todos
     //  los errores al mismo tiempo en lugar del primero que se encuentre.
@@ -42,7 +42,7 @@ function checkForm() {
     //  Además, incluyo una condición extra para devolver error sii el campo
     //  en cuestión es obligatorio en el formulario (el atributo 'required')
 
-    let ERROR = "¡UPS! Parece que los siguientes campos no tienen información válida:\n";
+    let ERROR = "¡UPS! Parece que los siguientes campos no tienen información válida:\n"
 
     if (NAME.value.trim() === "" && NAME.required)
         ERROR = ERROR.concat("\n* El campo 'Nombre' NO puede estar vacío.")
@@ -61,34 +61,46 @@ function checkForm() {
 
     if (ERROR === "¡UPS! Parece que los siguientes campos no tienen información válida:\n")
     {
-        alert("FORMULARIO ENVIADO CORRECTAMENTE!");
-        location.reload();
-        return;
+        alert("FORMULARIO ENVIADO CORRECTAMENTE!")
+        location.reload()
+        return
     }
 
-    alert(ERROR);
-};
+    alert(ERROR)
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const DEFAULT_STYLE_BUTTON = document.getElementById("styleDefault");
     const HIGH_CONTRAST_STYLE_BUTTON = document.getElementById("styleHighContrast");
+    const LABELS = document.querySelectorAll('label')
+    const LEGEND = document.getElementById("formLegend")
 
     DEFAULT_STYLE_BUTTON.addEventListener("click", () => {
         DEFAULT_STYLE_BUTTON.classList.add("active")
         HIGH_CONTRAST_STYLE_BUTTON.classList.remove("active")
-        document.body.classList.remove("high_contrast")
-    });
+        document.documentElement.style.setProperty('--bs-warning-bg-subtle', '#fff3cd', 'important')
+        LEGEND.style.setProperty('color', '#212529', 'important')
+        
+        LABELS.forEach((element) => {
+            element.style.setProperty('color', '#212529', 'important')
+        })
+    })
     
     HIGH_CONTRAST_STYLE_BUTTON.addEventListener("click", () => {
         HIGH_CONTRAST_STYLE_BUTTON.classList.add("active")
         DEFAULT_STYLE_BUTTON.classList.remove("active")
-        document.body.classList.add("high_contrast")
-    });
+        document.documentElement.style.setProperty('--bs-warning-bg-subtle', '#121212', 'important')
+        LEGEND.style.setProperty('color', '#f2f2f2', 'important')
+        
+        LABELS.forEach((element) => {
+            element.style.setProperty('color', '#f2f2f2', 'important')
+        })
+    })
 
-    const SUBMIT_BUTTON = document.getElementById("formSubmit");
+    const SUBMIT_BUTTON = document.getElementById("formSubmit")
 
     SUBMIT_BUTTON.addEventListener("click", (event) => {
-        event.preventDefault();
-        checkForm();
+        event.preventDefault()
+        checkForm()
     })
-});
+})
