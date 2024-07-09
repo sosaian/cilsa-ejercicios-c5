@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios Clase 5</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
+    <!-- <link rel="stylesheet" href="./css/styles.css"> -->
 </head>
-<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<body class="p-3 m-0 border-0 bd-example m-0 border-0 bg-warning-subtle">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <h1 class="navbar-brand">Ejercicios Clase 5</h1>
@@ -16,19 +16,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
-                    <li class="nav-item">
-                        <button id="styleDefault" class="nav-link active" aria-current="page">Estilo original</button>
+                    <li class="nav-item me-1">
+                        <button id="styleDefault" class="nav-link fw-bold active" aria-current="page">Estilo original</button>
                     </li>
                     <li class="nav-item">
-                        <button id="styleHighContrast" class="nav-link">Estilo de Alto Contraste</button>
+                        <button id="styleHighContrast" class="nav-link fw-bold">Estilo de Alto Contraste</button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <main>
+    <main class="container-fluid mb-1 col-12 col-md-10 col-xl-8">
         <form id="form">
-            <fieldset>
+            <fieldset class="container-fluid">
                 <legend>Formulario de datos personales</legend>
     
                 <div>
@@ -47,7 +47,7 @@
                     <label for="formDateOfBirth" class="form-label">Fecha de nacimiento</label>
                     <input id="formDateOfBirth" type="date" class="form-control" required>
                 </div>
-                <div>
+                <div class="mb-2">
                     <label for="formCountryOfResidence" class="form-label">País de residencia</label>
                     <select id="formCountryOfResidence" class="form-select" required>
                         <option value="" disabled selected>Seleccione su país</option>
@@ -61,11 +61,11 @@
                         <option value="Uruguay">Uruguay</option>
                     </select>
                 </div>
-                <button id="formSubmit" type="submit">Enviar</button>
+                <button id="formSubmit" type="submit" class="btn btn-primary">Enviar</button>
             </fieldset>
         </form>
     </main>
-    <footer class="bd-footer py-0 py-md-0 mt-0 bg-body-tertiary">
+    <footer class="bd-footer py-0 mt-0 d-flex justify-content-center bg-body-tertiary">
         <h2 class="fs-5">CILSA | Bootcamp Fullstack</h2>
     </footer>
     <script src="./js/bootstrap.bundle.min.js"></script>
