@@ -29,6 +29,19 @@ function validateEmail(email)
     return regex.test(email)
 }
 
+function validateName(name) {
+    const regex = /^[a-zA-ZÀ-ÿ\s]{2,15}$/
+    
+    /* 
+        Desglose de la Expresión Regular
+        Mínimo de 2 caracteres
+        Máximo de 15 caracteres
+        Puede contener letras, espacios y puede llevar acentos.       
+    */
+           
+    return regex.test(name)
+}
+
 function checkForm() {
     const NAME = document.getElementById("formName")
     const SURNAME = document.getElementById("formSurname")
@@ -44,11 +57,11 @@ function checkForm() {
 
     let ERROR = "¡UPS! Parece que los siguientes campos no tienen información válida:\n"
 
-    if (NAME.value.trim() === "" && NAME.required)
-        ERROR = ERROR.concat("\n* El campo 'Nombre' NO puede estar vacío.")
+    if (!validateName(NAME.value.trim()) && NAME.required)
+        ERROR = ERROR.concat("\n* El campo 'Nombre' debe tener entre 2 y 15 caracteres; letras, espacios y acentos.")
     
-    if (SURNAME.value.trim() === "" && SURNAME.required)
-        ERROR = ERROR.concat("\n* El campo 'Apellido' NO puede estar vacío.")
+    if (!validateName(SURNAME.value.trim()) && SURNAME.required)
+        ERROR = ERROR.concat("\n* El campo 'Apellido' debe tener entre 2 y 15 caracteres; letras, espacios y acentos.")
     
     if (!validateEmail(EMAIL.value.trim()) && EMAIL.required)
         ERROR = ERROR.concat("\n* El campo 'Correo electrónico' debe tener un email válido.")
