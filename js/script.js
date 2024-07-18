@@ -42,6 +42,48 @@ function validateName(name) {
     return regex.test(name)
 }
 
+const TODAY = new Date().toISOString().split('T')[0] // Obtengo la fecha actual en formato "YYYY-MM-DD"
+
+function validateDate(date) {
+    const regex = /^(\d{4})-(\d{2})-(\d{2})$/
+    
+    /* 
+        Desglose de la Expresión Regular
+            4 caracteres (YYYY) seguido de un guión (-)
+            2 caracteres (MM) seguido de un guión (-)
+            2 caracteres (DD) 
+    */
+
+    const MATCH = date.match(regex) // Me aseguro que la fecha cumpla con el formato YYYY-MM-DD
+                                    // (Gracias al date-picker HTML debería ser siempre el caso...)
+    if (!MATCH) {
+        return false
+    }
+
+    const [_, YEAR, MONTH, DAY] = MATCH.map(Number) // Usando "Number" convierto los strings en números.
+
+    if (YEAR < 0 || YEAR > TODAY.split('-')[0]) {   // Si el año ingresado es más grande que el actual
+        return false                                // devuelve 'false' directamente.
+    }
+    
+    if (MONTH < 1 || MONTH > 12) {
+        return false
+    }
+    
+    const LEAP_YEAR = YEAR % 4 === 0 && (YEAR % 100 !== 0 || YEAR % 400 === 0)
+    
+    const DAYS_IN_MONTH = [31, LEAP_YEAR ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    
+    if (DAY < 1 || DAY > DAYS_IN_MONTH[MONTH - 1]) {
+        return false
+    }
+
+    if (date > TODAY) // Valido que la fecha ingresada no esté en el futuro...
+        return false
+
+    return true
+}
+
 function checkForm() {
     const NAME = document.getElementById("formName")
     const SURNAME = document.getElementById("formSurname")
@@ -65,9 +107,9 @@ function checkForm() {
     
     if (!validateEmail(EMAIL.value.trim()) && EMAIL.required)
         ERROR = ERROR.concat("\n* El campo 'Correo electrónico' debe tener un email válido.")
-    
-    if (DATE_OF_BIRTH.value === "" && DATE_OF_BIRTH.required)
-        ERROR = ERROR.concat("\n* El campo 'Fecha de nacimiento' NO puede estar incompleto.")
+
+    if (!validateDate(DATE_OF_BIRTH.value) && DATE_OF_BIRTH.required)
+        ERROR = ERROR.concat("\n* El campo 'Fecha de nacimiento' necesita una fecha en el pasado válida.")
     
     if (COUNTRY_OF_RESIDENCE.value === "" && COUNTRY_OF_RESIDENCE.required)
         ERROR = ERROR.concat("\n* El campo 'País de residencia' necesita algún país indicado.")
@@ -83,6 +125,8 @@ function checkForm() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("formDateOfBirth").setAttribute('max', TODAY)
+    
     const DEFAULT_STYLE_BUTTON = document.getElementById("styleDefault");
     const HIGH_CONTRAST_STYLE_BUTTON = document.getElementById("styleHighContrast");
     const LABELS = document.querySelectorAll('label')
